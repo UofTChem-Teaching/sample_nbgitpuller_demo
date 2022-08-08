@@ -1,5 +1,5 @@
 ---
-title: "Tutorial 1 Assignment Code"
+title: "Demo Code"
 output: html_document
 ---
 
@@ -58,7 +58,7 @@ library(dplyr)    # alternatively, this also loads %>%
 
 # Part 1: Data Analysis
 
-Create SMILES for each of the FTOH and PFAA structures provided in the Tutorial 1 - Week 2 slides. I strongly recommend writing them in order of increasing chain length, as this will help you interpret your figures later. You can copy and paste the SMILES strings (without the quotation marks) directly into ChemDraw to confirm whether you made them correctly.
+Create SMILES for each of the FTOH and PFAA structures.
 
 ```{r}
 cmpdList1 <- c( #Perfluoroalkyl acids
@@ -95,7 +95,7 @@ cmpdList2 <- c( #Fluorotelomer alcohols
 ```
 
 
-The code below will convert the SMILES strings into a search format recognized by the CompTox database. After running this block you should have two text files in your project folder.
+The code below will convert the SMILES strings into a search format.
 
 ```{r export}
 compounds <- tibble(SMILES = cmpdList1) #Converts the input data into a 1-column tibble (tidy table)
@@ -122,7 +122,7 @@ write_lines(InChiKeys2$InChIKey, file = "copy_into_CompTox2.txt") #Rename this t
 
 # Part 2: CompTox
 
-Step 1: Open the CompTox Dashboard in your internet browser: https://comptox.epa.gov/dashboard/batch-search
+Step 1: Open the Dashboard in your internet browser: https://comptox.epa.gov/dashboard/batch-search
 
 Step 2: Under Input Types, select **InChIKey**.
 
@@ -193,7 +193,7 @@ write_csv(resultsCombined, file = "Predicted_Partioning_Coefficients.csv")
 ```
 # Part 3: Example Plots
 
-Example plot of log KOA as a function of log KAW.
+Example plot of KOA as a function of KAW.
 
 ```{r plot1}
 Kplot <- ggplot(data = resultsCombined, mapping = aes(x = log_KOA, y = log_KAW, color = Group, label = CmpdID))+ 
